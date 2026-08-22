@@ -33,22 +33,31 @@ d'ajouter la moindre fonctionnalité.
 
 Ce premier déploiement part de la branche `main` du dépôt, qui est encore
 presque vide à ce stade du projet — il est normal qu'il échoue ou n'affiche
-rien d'intéressant. L'étape suivante corrige ça en pointant Vercel vers la
-branche où se trouve le travail en cours.
+rien d'intéressant. Ce n'est pas un problème : Vercel crée aussi, séparément,
+une adresse pour **chaque branche** poussée sur GitHub. Le travail en cours
+est sur la branche `claude/5-stars-review-mvp-bqmu0e`, pas sur `main` — c'est
+son adresse à elle qu'il faut ouvrir. L'étape suivante explique comment la
+trouver.
 
-### Étape C — Faire pointer Vercel vers la bonne branche
+### Étape C — Ouvrir l'adresse de la branche en cours
 
-1. Une fois le projet créé dans Vercel, ouvrir l'onglet **Settings** du
-   projet (en haut de la page).
-2. Dans le menu de gauche, cliquer **Git**.
-3. Trouver le champ **Production Branch**. Il contient `main` : remplacer
-   par `claude/5-stars-review-mvp-bqmu0e`, puis cliquer **Save**.
-4. Retourner à l'onglet **Deployments**.
-5. Cliquer **Redeploy** (ou les trois points `…` sur la ligne du déploiement
-   le plus récent, puis **Redeploy**).
-6. Attendre 1 à 2 minutes que le statut passe à **Ready**.
-7. Cliquer sur l'adresse affichée (elle ressemble à `test-saas.vercel.app`
-   ou `test-saas-xxxxx.vercel.app`) pour ouvrir le site.
+1. Sur la page du projet dans Vercel, cliquer l'onglet **Deployments** (en
+   haut de la page).
+2. Une liste de déploiements apparaît, un par envoi de code. Chercher celui
+   dont le nom de branche affiché est `claude/5-stars-review-mvp-bqmu0e` (il
+   est visible à côté ou en dessous du message de commit, sur chaque ligne).
+3. Cliquer sur cette ligne pour ouvrir le détail du déploiement.
+4. Attendre que le statut indique **Ready** (quelques minutes si ce n'est pas
+   déjà fait).
+5. Cliquer sur le bouton **Visit** (ou sur l'image d'aperçu du site) : ça
+   ouvre l'adresse propre à cette branche, du type
+   `test-saas-git-claude-5-stars-review-mvp-bqmu0e-<ton-compte>.vercel.app`.
+
+Si l'onglet **Deployments** ne montre qu'une seule ligne grisée en échec :
+c'est celle de la branche `main` (normal, voir plus haut) — vérifier qu'une
+seconde ligne existe pour l'autre branche. Si elle n'apparaît pas du tout,
+prévenir : il faudra vérifier que Vercel a bien accès à toutes les branches
+du dépôt, pas seulement `main`.
 
 ### Vérification
 
