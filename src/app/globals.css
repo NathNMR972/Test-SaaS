@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+/* Identité reprise du site vitrine (nathnmr972.github.io/Test-Claude-Code).
+   Ne pas changer ces valeurs sans mettre à jour aussi le site vitrine. */
+:root {
+  --nuit: #14302b;
+  --papier: #f2dcc6;
+  --papier-dim: #e8cba6;
+  --piment: #e6355c;
+  --piment-texte: #a12540; /* piment assombri, ≥ 4.5:1 sur fond clair */
+  --soleil: #eaa33b;
+  --ecume: #f7efe6;
+  --encre: #1c1a17;
+
+  --background: var(--papier);
+  --foreground: var(--encre);
+}
+
+@theme inline {
+  --color-nuit: var(--nuit);
+  --color-papier: var(--papier);
+  --color-papier-dim: var(--papier-dim);
+  --color-piment: var(--piment);
+  --color-piment-texte: var(--piment-texte);
+  --color-soleil: var(--soleil);
+  --color-ecume: var(--ecume);
+  --color-encre: var(--encre);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --font-affichage: var(--font-bungee), "Arial Black", system-ui, sans-serif;
+  --font-texte: var(--font-karla), "Segoe UI", system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-texte);
+}
