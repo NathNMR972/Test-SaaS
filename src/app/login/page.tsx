@@ -8,9 +8,10 @@ const MESSAGES_ERREUR: Record<string, string> = {
 };
 
 export default async function LoginPage(props: PageProps<"/login">) {
-  const { envoye, erreur } = await props.searchParams;
+  const { envoye, erreur, detail } = await props.searchParams;
   const messageErreur =
     typeof erreur === "string" ? MESSAGES_ERREUR[erreur] : undefined;
+  const detailErreur = typeof detail === "string" ? detail : undefined;
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center gap-8 px-6 py-16">
@@ -74,6 +75,9 @@ export default async function LoginPage(props: PageProps<"/login">) {
           />
           {messageErreur && (
             <p className="text-sm text-piment-texte">{messageErreur}</p>
+          )}
+          {detailErreur && (
+            <p className="font-mono text-xs text-encre/60">{detailErreur}</p>
           )}
           <button
             type="submit"
