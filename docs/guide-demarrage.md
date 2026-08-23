@@ -78,6 +78,78 @@ plan payant nécessaire.
 
 ---
 
-*Sections suivantes ajoutées au fil des prochains jalons : création du
-compte Supabase et connexion admin (Jalon 2), enregistrement du premier
-commerce (Jalon 3), et la suite.*
+## Jalon 2 — Connexion admin
+
+Objectif : pouvoir se connecter au panneau d'administration avec ton adresse
+email, par lien magique (pas de mot de passe), et être seul à pouvoir le
+faire.
+
+### Étape A — Créer le compte et le projet Supabase
+
+1. Va sur **supabase.com**, clique **Start your project**, connecte-toi avec
+   **GitHub**.
+2. Clique **New Project**, remplis :
+   - **Name** : `5-stars-review` (peu importe, n'apparaît nulle part côté
+     client).
+   - **Database Password** : laisse Supabase la générer, copie-la et garde-la
+     de côté (gestionnaire de mots de passe ou note).
+   - **Region** : une région Europe (ex. *West EU (Ireland)* ou *Central EU
+     (Frankfurt)*).
+   - Plan **Free**.
+3. Clique **Create new project** et attends 1 à 2 minutes.
+
+### Étape B — Copier les clés
+
+1. **Settings** (icône d'engrenage) → **API** (ou « API Keys »).
+2. Copie le **Project URL** et la clé publique (**anon / public key**, parfois
+   appelée **publishable key**).
+
+### Étape C — N'autoriser qu'un seul compte
+
+1. Dans le menu de gauche, ouvre **Authentication**.
+2. Onglet **Settings** (parfois « Sign In / Providers ») → trouve **Allow new
+   users to sign up** → désactive-le. Personne ne pourra créer de compte tout
+   seul, y compris via le lien de connexion.
+3. Onglet **Users** → **Add user** → **Create new user** :
+   - Email : ton adresse (`nathanaelouisor@gmail.com`).
+   - Active **Auto Confirm User**.
+   - Clique **Create user**.
+
+### Étape D — Autoriser l'adresse du site à recevoir le lien
+
+1. Toujours dans **Authentication**, ouvre **URL Configuration**.
+2. Dans **Redirect URLs**, ajoute :
+   ```
+   https://*-nath-nmr-972.vercel.app/**
+   ```
+   (le `*` couvre toutes les adresses que Vercel génère pour ton compte —
+   pas besoin de la changer à chaque déploiement).
+3. Sauvegarde.
+
+### Étape E — Coller les clés dans Vercel
+
+1. Sur Vercel, ouvre le projet → **Settings** → **Environment Variables**.
+2. Ajoute deux variables (coche les trois cases d'environnement — Production,
+   Preview, Development — pour chacune) :
+   - `NEXT_PUBLIC_SUPABASE_URL` → colle le **Project URL** de l'étape B.
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY` → colle la clé publique de l'étape B.
+3. Clique **Save** pour chacune.
+4. Va dans **Deployments**, ouvre le déploiement le plus récent sur la
+   branche `claude/5-stars-review-mvp-bqmu0e`, clique **…** → **Redeploy**
+   (les nouvelles variables ne s'appliquent qu'à un déploiement lancé après
+   les avoir ajoutées).
+
+### Vérification
+
+Ouvre l'adresse du site : elle doit maintenant rediriger automatiquement vers
+une page **Connexion** avec le tampon à l'étoile. Entre ton adresse email,
+clique **Envoyer le lien de connexion**, ouvre ta boîte mail, clique sur le
+lien reçu : tu dois atterrir sur une page **Commerces** avec ton adresse
+affichée en haut et un bouton **Se déconnecter**.
+
+**Ce que ça coûte** : rien pour un seul commerce pilote (plan Supabase Free).
+
+---
+
+*Sections suivantes ajoutées au fil des prochains jalons : enregistrement du
+premier commerce (Jalon 3), et la suite.*
