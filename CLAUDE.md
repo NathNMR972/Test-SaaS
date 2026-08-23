@@ -125,4 +125,8 @@ Voir la liste des tâches (Jalons 0 à 6 + livrables finaux). Mettre à jour
 cette section et `docs/guide-demarrage.md` à la fin de chaque jalon.
 
 - Jalon 0 (plan) : fait.
-- Jalon 1 (déploiement Vercel) : en cours.
+- Jalon 1 (déploiement Vercel) : fait — le projet est en ligne, connecté à
+  GitHub, déployé automatiquement à chaque envoi de code. Le compte Vercel
+  du fondateur est créé et fonctionnel (dépôt `Test-SaaS`, projet Vercel
+  `test-saa-s`).
+- Jalon 2 (connexion admin) : en cours.
