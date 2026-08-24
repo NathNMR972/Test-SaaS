@@ -129,4 +129,10 @@ cette section et `docs/guide-demarrage.md` à la fin de chaque jalon.
   GitHub, déployé automatiquement à chaque envoi de code. Le compte Vercel
   du fondateur est créé et fonctionnel (dépôt `Test-SaaS`, projet Vercel
   `test-saa-s`).
-- Jalon 2 (connexion admin) : en cours.
+- Jalon 2 (connexion admin) : fait — lien magique par email opérationnel.
+  Détail technique important : le modèle d'email Supabase par défaut ne
+  peut pas être personnalisé sans SMTP externe (plan gratuit) ; `/auth/confirm`
+  échange donc un `?code=` PKCE (`exchangeCodeForSession`), pas un
+  `token_hash`. Ne pas revenir à `verifyOtp({token_hash})` sans SMTP
+  personnalisé configuré.
+- Jalon 3 (créer/modifier un commerce) : en cours.

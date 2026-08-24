@@ -24,9 +24,7 @@ export async function demanderLienConnexion(formData: FormData) {
   });
 
   if (error) {
-    // Message brut affiché temporairement le temps de diagnostiquer la mise
-    // en route (voir Jalon 2 dans CLAUDE.md) — à retirer une fois validé.
-    redirect(`/login?erreur=envoi-echoue&detail=${encodeURIComponent(error.message)}`);
+    redirect("/login?erreur=envoi-echoue");
   }
 
   redirect("/login?envoye=1");
