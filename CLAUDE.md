@@ -135,4 +135,6 @@ cette section et `docs/guide-demarrage.md` à la fin de chaque jalon.
   échange donc un `?code=` PKCE (`exchangeCodeForSession`), pas un
   `token_hash`. Ne pas revenir à `verifyOtp({token_hash})` sans SMTP
   personnalisé configuré.
-- Jalon 3 (créer/modifier un commerce) : en cours.
+- Jalon 3 (créer/modifier un commerce) : fait — schéma SQL exécuté,
+  création/modification/archivage testés en production.
+- Jalon 4 (page publique réelle) : à venir.
