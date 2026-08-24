@@ -217,5 +217,32 @@ déjà). Une seule chose à faire de ton côté : créer la table des événemen
 
 ---
 
-*Sections suivantes ajoutées au fil des prochains jalons : le QR code
-téléchargeable (Jalon 5), et la suite.*
+## Jalon 5 — Le QR code
+
+Objectif : télécharger le QR code d'un commerce, prêt à imprimer. Rien à
+faire côté Supabase pour ce jalon — uniquement du code.
+
+### Vérification
+
+1. Ouvre la fiche d'un commerce (**Modifier**). Un aperçu du QR code doit
+   apparaître au-dessus du formulaire.
+2. Clique **Télécharger en SVG** puis **Télécharger en PNG** : deux fichiers
+   doivent se télécharger.
+3. Scanne le QR avec l'appareil photo d'un téléphone : il doit ouvrir la
+   page publique du commerce (`/avis/...`), pas directement Google — c'est
+   voulu, voir le principe central du projet dans `CLAUDE.md`.
+
+**Important, à retenir avant d'imprimer pour de vrai** : le QR encode
+l'adresse du site *telle qu'elle est au moment du téléchargement*. Tant que
+le site n'a que son adresse provisoire Vercel (`...vercel.app`), c'est cette
+adresse-là qui sera encodée. Si un jour tu passes à une adresse définitive
+(nom de domaine personnalisé), il faudra retélécharger et réimprimer les QR
+codes une dernière fois à ce moment-là — mais plus jamais ensuite : c'est
+justement tout l'intérêt de l'architecture du projet (voir Jalon 4).
+
+**Ce que ça coûte** : rien.
+
+---
+
+*Sections suivantes ajoutées au fil des prochains jalons : les statistiques
+(Jalon 6), et la suite.*
