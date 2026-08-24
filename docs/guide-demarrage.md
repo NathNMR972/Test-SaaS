@@ -265,7 +265,53 @@ Rien à faire côté Supabase pour ce jalon — uniquement du code.
 
 ---
 
-C'est la fin des six jalons prévus. Il reste les livrables finaux : le
-README technique (déjà à jour), ce guide (déjà à jour au fil de l'eau), et
-`CLAUDE.md` à la racine du dépôt pour reprendre le projet sans tout
-réexpliquer.
+## Sécurité — ce qui est protégé, et ce qui reste à ta charge
+
+Tu ne liras jamais le code, donc voici en clair ce qui a été verrouillé
+techniquement, et ce qui dépend de toi.
+
+### Ce qui est déjà protégé
+
+- **Aucune clé secrète dans le code.** Les clés Supabase vivent uniquement
+  dans les variables d'environnement de Vercel, jamais dans le dépôt GitHub
+  (qui pourrait être vu par n'importe qui s'il devenait public par erreur).
+- **Personne ne peut créer de compte tout seul.** Les inscriptions publiques
+  sont désactivées côté Supabase, et le code lui-même refuse d'en créer un
+  nouveau même si ce réglage était modifié par erreur (double sécurité).
+- **Chaque table de la base est verrouillée par défaut** (RLS, « Row Level
+  Security ») : un visiteur anonyme ne peut lire que les commerces marqués
+  actifs, ne peut qu'ajouter une ligne de statistique (jamais les lire, les
+  modifier ou les supprimer), et ne peut rien faire d'autre. Toi seul,
+  connecté, as accès à tout.
+- **L'identifiant d'URL d'un commerce ne peut jamais être modifié après
+  création** — verrouillé dans l'écran ET directement en base (même une
+  tentative technique de le changer serait rejetée).
+- **Tout ce que tu tapes (nom, adresse…) est toujours affiché comme du
+  texte simple**, jamais exécuté comme du code — ça empêche un commerçant
+  malveillant ou un simple accident de tordre la page publique.
+- **Les logos sont limités en type de fichier (PNG, JPEG, WebP — jamais de
+  SVG, qui peut contenir du code) et en taille (2 Mo maximum)**, vérifié
+  côté serveur, pas seulement dans le formulaire.
+- **Le téléchargement du QR code est réservé à un compte connecté.**
+
+### Ce qui reste à ta charge
+
+- **La sécurité de ta boîte email.** La connexion se fait par lien envoyé à
+  ton adresse : toute personne ayant accès à cette boîte mail peut se
+  connecter à l'administration. Active la double authentification sur ton
+  compte email si ce n'est pas déjà fait.
+- **Les mots de passe de tes comptes GitHub, Vercel et Supabase.** Utilise
+  des mots de passe uniques et, idéalement, la double authentification sur
+  chacun — ce sont les trois clés qui donnent accès à tout le projet.
+- **Le mot de passe de la base de données Supabase**, généré à la création
+  du projet (Jalon 2) : garde-le dans un endroit sûr, ne le partage jamais.
+- **Ne jamais coller une vraie clé ou un mot de passe dans un message, un
+  fichier partagé ou une conversation** — si un jour tu dois me donner un
+  accès, demande d'abord comment faire en toute sécurité.
+
+---
+
+C'est la fin des six jalons prévus. Le pilote (Maison Blanche) peut être
+créé dès que sa fiche Google est prête — via **Nouveau commerce**, sans
+rien de plus. Les livrables finaux (README technique, ce guide, et
+`CLAUDE.md` à la racine du dépôt) sont à jour.

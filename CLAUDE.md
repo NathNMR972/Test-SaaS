@@ -66,7 +66,8 @@ si le site vitrine change ses couleurs, les réajuster ici aussi.
   Bungee (`--font-affichage`, titres condensés), Karla (`--font-texte`,
   corps), IBM Plex Mono (`--font-mono`, légendes/chasse fixe).
 - Signature : le tampon à l'étoile encrée. À utiliser à un seul endroit fort
-  (prévu : l'écran de connexion), jamais en décoration répétée.
+  (l'écran de connexion, `src/app/login/page.tsx`), jamais en décoration
+  répétée ailleurs.
 - 6 secteurs déjà definis côté copie (restaurant, salon/institut, garage,
   hôtel, cabinet, boutique) — dépasse le minimum de 4 variantes demandé.
 - L'app est un outil de travail : plus dense et plus calme que le site
@@ -144,4 +145,11 @@ cette section et `docs/guide-demarrage.md` à la fin de chaque jalon.
   téléchargement et scan testés en production. Le QR encode l'adresse
   du site au moment du téléchargement : à retélécharger et réimprimer
   une dernière fois si un nom de domaine définitif est adopté plus tard.
-- Jalon 6 (statistiques) : en cours.
+- Jalon 6 (statistiques) : fait — résumé sur la fiche commerce, écran
+  détaillé (30 jours) avec avertissement honnête sur ce que les chiffres
+  mesurent, testés en production.
+
+Les six jalons prévus sont terminés. Le pilote (Maison Blanche) peut être
+enregistré dès que le fondateur a sa fiche Google prête ; le reste
+(nouveaux commerces, changement de destination Google, lecture des
+statistiques) ne nécessite plus aucune intervention technique.

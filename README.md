@@ -43,14 +43,21 @@ Vercel (Project Settings → Environment Variables) — jamais commitées.
 ## Structure du projet
 
 ```
-src/app/            Routes (App Router) : pages, layouts, routes API
-src/components/      Composants React réutilisables
-src/lib/             Logique métier partagée (slug, contraste, QR, Supabase…)
-supabase/migrations/ Schéma SQL (tables, RLS, contraintes)
-docs/                Guide de démarrage pour le fondateur
+src/app/              Routes (App Router)
+  login/                Connexion admin (lien magique)
+  dashboard/            Panneau d'administration (protégé)
+  avis/[slug]/          Page publique consultée par les clients
+  go/[slug]/            Redirection trackée vers la fiche Google
+  api/commerces/[id]/   Téléchargement des QR codes (SVG/PNG)
+src/components/       Composants React réutilisables
+src/lib/               Logique métier partagée (slug, contraste, QR, Supabase…)
+src/types/             Types TypeScript partagés
+supabase/migrations/   Schéma SQL (tables, RLS, contraintes)
+docs/                  Guide de démarrage pour le fondateur
 ```
 
 ## État du projet
 
-Développé par jalons successifs (voir la liste des tâches / `CLAUDE.md`).
-Jalon en cours : mise en ligne initiale sur Vercel.
+Les six jalons prévus sont terminés : connexion admin, gestion des
+commerces, page publique, QR code, statistiques. Voir `CLAUDE.md` pour le
+détail et les décisions techniques.
