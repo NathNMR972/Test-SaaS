@@ -1,0 +1,87 @@
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { createClient } from "@/lib/supabase/server";
+import { CommerceForm } from "@/components/commerce-form";
+import { QrCard } from "@/components/qr-card";
+import { StatsPanel } from "@/components/stats-panel";
+import { chargerStatistiques } from "@/lib/statistiques";
+import type { Commerce } from "@/types/commerce";
+import { modifierCommerce, basculerArchivage } from "./actions";
+
+export default async function ModifierCommercePage(
+  props: PageProps<"/dashboard/[id]/modifier">,
+) {
+  const { id } = await props.params;
+  const { erreur } = await props.searchParams;
+
+  const supabase = await createClient();
+  const { data: commerce } = await supabase
+    .from("commerces")
+    .select("*")
+    .eq("id", id)
+    .single<Commerce>();
+
+  if (!commerce) {
+    notFound();
+  }
+
+  const stats = await chargerStatistiques(supabase, commerce.id);
+
+  return (
+    <div>
+      <div className="flex items-start justify-between gap-4">
+        <div>
+          <h1 className="font-[family-name:var(--font-affichage)] text-2xl text-nuit">
+            Modifier {commerce.nom}
+          </h1>
+          <p className="mt-1 text-sm text-encre/70">
+            avis/{commerce.slug} · statut :{" "}
+            {commerce.statut === "actif" ? "actif" : "archivé"}
+          </p>
+        </div>
+        <div className="flex items-center gap-3">
+          <a
+            href={`/avis/${commerce.slug}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm underline"
+          >
+            Voir la page publique
+          </a>
+          <form action={basculerArchivage}>
+            <input type="hidden" name="id" value={commerce.id} />
+            <input type="hidden" name="statut_actuel" value={commerce.statut} />
+            <button
+              type="submit"
+              className="rounded border border-encre/20 px-3 py-2 text-sm text-encre/80"
+            >
+              {commerce.statut === "actif" ? "Archiver" : "Réactiver"}
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div className="mt-8">
+        <StatsPanel stats={stats} />
+        <Link
+          href={`/dashboard/${commerce.id}/statistiques`}
+          className="mt-3 inline-block text-sm underline"
+        >
+          Voir le détail sur 30 jours
+        </Link>
+      </div>
+
+      <div className="mt-8">
+        <QrCard commerceId={commerce.id} slug={commerce.slug} />
+      </div>
+
+      <div className="mt-8">
+        <CommerceForm
+          action={modifierCommerce}
+          commerce={commerce}
+          erreur={typeof erreur === "string" ? erreur : undefined}
+        />
+      </div>
+    </div>
+  );
+}
