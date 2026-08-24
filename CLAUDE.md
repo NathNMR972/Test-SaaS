@@ -137,4 +137,7 @@ cette section et `docs/guide-demarrage.md` à la fin de chaque jalon.
   personnalisé configuré.
 - Jalon 3 (créer/modifier un commerce) : fait — schéma SQL exécuté,
   création/modification/archivage testés en production.
-- Jalon 4 (page publique réelle) : à venir.
+- Jalon 4 (page publique réelle) : fait — /avis/[slug] et /go/[slug]
+  testés en production (affichage, redirection Google, page d'erreur pour
+  un slug inexistant).
+- Jalon 5 (QR code) : à venir.
