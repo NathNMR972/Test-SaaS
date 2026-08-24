@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { CommerceForm } from "@/components/commerce-form";
+import { QrCard } from "@/components/qr-card";
 import type { Commerce } from "@/types/commerce";
 import { modifierCommerce, basculerArchivage } from "./actions";
 
@@ -53,6 +54,10 @@ export default async function ModifierCommercePage(
             </button>
           </form>
         </div>
+      </div>
+
+      <div className="mt-8">
+        <QrCard commerceId={commerce.id} slug={commerce.slug} />
       </div>
 
       <div className="mt-8">
