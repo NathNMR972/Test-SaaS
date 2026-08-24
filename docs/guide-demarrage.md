@@ -244,5 +244,28 @@ justement tout l'intérêt de l'architecture du projet (voir Jalon 4).
 
 ---
 
-*Sections suivantes ajoutées au fil des prochains jalons : les statistiques
-(Jalon 6), et la suite.*
+## Jalon 6 — Les statistiques
+
+Objectif : voir combien de personnes scannent le QR et cliquent vers Google.
+Rien à faire côté Supabase pour ce jalon — uniquement du code.
+
+### Vérification
+
+1. Sur la fiche d'un commerce (**Modifier**), un résumé (Scans, Clics vers
+   Google, Taux de clic) doit apparaître.
+2. Clique **Voir le détail sur 30 jours** : un graphique en barres sobre
+   doit s'afficher (une barre foncée = scans, une barre rouge = clics, par
+   jour), avec un encadré qui explique honnêtement ce que ces chiffres
+   mesurent — et ce qu'ils ne mesurent pas (on ne sait pas combien de clics
+   se transforment en avis réellement publiés, Google ne le communique pas).
+3. Si tu as testé la page publique d'un commerce plusieurs fois au fil des
+   jalons précédents, les chiffres doivent déjà refléter ces visites.
+
+**Ce que ça coûte** : rien.
+
+---
+
+C'est la fin des six jalons prévus. Il reste les livrables finaux : le
+README technique (déjà à jour), ce guide (déjà à jour au fil de l'eau), et
+`CLAUDE.md` à la racine du dépôt pour reprendre le projet sans tout
+réexpliquer.
