@@ -19,7 +19,10 @@ export async function GET(request: NextRequest) {
     if (!error) {
       redirect("/dashboard");
     }
+
+    // Détail temporaire affiché le temps de diagnostiquer (voir login/actions.ts).
+    redirect(`/login?erreur=lien-invalide&detail=${encodeURIComponent(error.message)}`);
   }
 
-  redirect("/login?erreur=lien-invalide");
+  redirect("/login?erreur=lien-invalide&detail=parametres-manquants");
 }
