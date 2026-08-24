@@ -1,7 +1,10 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { CommerceForm } from "@/components/commerce-form";
 import { QrCard } from "@/components/qr-card";
+import { StatsPanel } from "@/components/stats-panel";
+import { chargerStatistiques } from "@/lib/statistiques";
 import type { Commerce } from "@/types/commerce";
 import { modifierCommerce, basculerArchivage } from "./actions";
 
@@ -21,6 +24,8 @@ export default async function ModifierCommercePage(
   if (!commerce) {
     notFound();
   }
+
+  const stats = await chargerStatistiques(supabase, commerce.id);
 
   return (
     <div>
@@ -54,6 +59,16 @@ export default async function ModifierCommercePage(
             </button>
           </form>
         </div>
+      </div>
+
+      <div className="mt-8">
+        <StatsPanel stats={stats} />
+        <Link
+          href={`/dashboard/${commerce.id}/statistiques`}
+          className="mt-3 inline-block text-sm underline"
+        >
+          Voir le détail sur 30 jours
+        </Link>
       </div>
 
       <div className="mt-8">

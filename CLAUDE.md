@@ -140,4 +140,8 @@ cette section et `docs/guide-demarrage.md` à la fin de chaque jalon.
 - Jalon 4 (page publique réelle) : fait — /avis/[slug] et /go/[slug]
   testés en production (affichage, redirection Google, page d'erreur pour
   un slug inexistant).
-- Jalon 5 (QR code) : à venir.
+- Jalon 5 (QR code) : fait — génération SVG/PNG (bibliothèque `qrcode`),
+  téléchargement et scan testés en production. Le QR encode l'adresse
+  du site au moment du téléchargement : à retélécharger et réimprimer
+  une dernière fois si un nom de domaine définitif est adopté plus tard.
+- Jalon 6 (statistiques) : en cours.
