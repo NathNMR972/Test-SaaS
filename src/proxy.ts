@@ -53,6 +53,9 @@ export async function proxy(request: NextRequest) {
   return response;
 }
 
+// Limité aux routes qui dépendent de la session : les pages publiques
+// (/avis/[slug], /go/[slug]) n'ont pas besoin de cette vérification et
+// doivent rester aussi rapides que possible.
 export const config = {
-  matcher: ["/((?!_next/static|_next/image|favicon.ico).*)"],
+  matcher: ["/dashboard/:path*", "/login"],
 };

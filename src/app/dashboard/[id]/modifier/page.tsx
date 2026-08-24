@@ -33,16 +33,26 @@ export default async function ModifierCommercePage(
             {commerce.statut === "actif" ? "actif" : "archivé"}
           </p>
         </div>
-        <form action={basculerArchivage}>
-          <input type="hidden" name="id" value={commerce.id} />
-          <input type="hidden" name="statut_actuel" value={commerce.statut} />
-          <button
-            type="submit"
-            className="rounded border border-encre/20 px-3 py-2 text-sm text-encre/80"
+        <div className="flex items-center gap-3">
+          <a
+            href={`/avis/${commerce.slug}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm underline"
           >
-            {commerce.statut === "actif" ? "Archiver" : "Réactiver"}
-          </button>
-        </form>
+            Voir la page publique
+          </a>
+          <form action={basculerArchivage}>
+            <input type="hidden" name="id" value={commerce.id} />
+            <input type="hidden" name="statut_actuel" value={commerce.statut} />
+            <button
+              type="submit"
+              className="rounded border border-encre/20 px-3 py-2 text-sm text-encre/80"
+            >
+              {commerce.statut === "actif" ? "Archiver" : "Réactiver"}
+            </button>
+          </form>
+        </div>
       </div>
 
       <div className="mt-8">

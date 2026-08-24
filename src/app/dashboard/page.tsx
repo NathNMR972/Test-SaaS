@@ -59,6 +59,12 @@ export default async function DashboardPage() {
                 <p className="font-mono text-xs text-encre/60">
                   avis/{commerce.slug} · {libelleSecteur(commerce.secteur)}
                 </p>
+                {!commerce.google_avis_url && (
+                  <p className="mt-1 text-xs text-piment-texte">
+                    Lien Google manquant — la page publique ne peut pas
+                    encore rediriger.
+                  </p>
+                )}
               </div>
               <Link
                 href={`/dashboard/${commerce.id}/modifier`}
