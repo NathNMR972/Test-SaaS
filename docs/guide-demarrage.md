@@ -151,5 +151,40 @@ affichée en haut et un bouton **Se déconnecter**.
 
 ---
 
-*Sections suivantes ajoutées au fil des prochains jalons : enregistrement du
-premier commerce (Jalon 3), et la suite.*
+## Jalon 3 — Créer et modifier un commerce
+
+Objectif : pouvoir enregistrer un commerce (nom, secteur, couleur, logo,
+adresse, lien Google) et le modifier ensuite. Une seule chose à faire de ton
+côté : créer la table dans la base de données.
+
+### Étape A — Exécuter le schéma SQL
+
+1. Sur ton projet Supabase, ouvre **SQL Editor** dans le menu de gauche.
+2. Clique **New query**.
+3. Ouvre le fichier `supabase/migrations/0001_commerces.sql` du dépôt GitHub
+   (onglet **Code**, dossier `supabase/migrations`), copie tout son contenu,
+   colle-le dans l'éditeur SQL de Supabase, clique **Run**.
+4. Répète avec `supabase/migrations/0002_storage_logos.sql` (nouvelle
+   requête, coller, **Run**).
+
+Chaque script ne doit être exécuté **qu'une seule fois**. S'il y a un message
+vert de succès, c'est fait — pas besoin d'y retoucher.
+
+### Vérification
+
+1. Menu de gauche → **Table Editor** : une table **commerces** doit
+   apparaître (vide pour l'instant).
+2. Menu de gauche → **Storage** : un bucket **logos** doit apparaître.
+3. Sur le site, connecte-toi, clique **Nouveau commerce**, remplis le
+   formulaire (le nom suffit pour l'instant, le reste est facultatif) et
+   valide. Le commerce doit apparaître dans la liste. Clique **Modifier**
+   pour vérifier que l'identifiant d'URL est bien verrouillé (grisé,
+   non modifiable).
+
+**Ce que ça coûte** : rien pour un seul commerce pilote (le stockage des
+logos reste très en dessous du plan gratuit).
+
+---
+
+*Sections suivantes ajoutées au fil des prochains jalons : la page publique
+réelle (Jalon 4), et la suite.*
