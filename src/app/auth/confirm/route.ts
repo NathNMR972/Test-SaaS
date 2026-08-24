@@ -1,20 +1,23 @@
-import { type EmailOtpType } from "@supabase/supabase-js";
 import { redirect } from "next/navigation";
 import { type NextRequest } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 
-// Lien cliqué depuis l'email "connexion" envoyé par Supabase.
+// Lien cliqué depuis l'email "connexion" envoyé par Supabase. Avec le
+// modèle d'email par défaut (non modifiable sans SMTP personnalisé),
+// Supabase vérifie le lien lui-même puis nous redirige ici avec un code
+// à échanger contre une session (flux PKCE), plutôt qu'un jeton à vérifier
+// nous-mêmes.
 export async function GET(request: NextRequest) {
   const { searchParams } = request.nextUrl;
-  const tokenHash = searchParams.get("token_hash");
-  const type = searchParams.get("type") as EmailOtpType | null;
+  const code = searchParams.get("code");
+  const flowId = searchParams.get("sb_flow_id");
 
-  if (tokenHash && type) {
+  if (code) {
     const supabase = await createClient();
-    const { error } = await supabase.auth.verifyOtp({
-      type,
-      token_hash: tokenHash,
-    });
+    const { error } = await supabase.auth.exchangeCodeForSession(
+      code,
+      flowId ? { flowId } : undefined,
+    );
 
     if (!error) {
       redirect("/dashboard");
