@@ -186,5 +186,36 @@ logos reste très en dessous du plan gratuit).
 
 ---
 
-*Sections suivantes ajoutées au fil des prochains jalons : la page publique
-réelle (Jalon 4), et la suite.*
+## Jalon 4 — La page publique
+
+Objectif : la page que voit un client après avoir scanné le QR code (pas
+encore de QR à ce stade — ça arrive au Jalon 5, mais l'adresse fonctionne
+déjà). Une seule chose à faire de ton côté : créer la table des événements
+(visites et clics), en base.
+
+### Étape A — Exécuter le troisième script SQL
+
+1. Supabase → **SQL Editor** → **New query**.
+2. Copie le contenu de `supabase/migrations/0003_evenements.sql` (dépôt
+   GitHub, dossier `supabase/migrations`) → colle → **Run**.
+
+### Vérification
+
+1. **Table Editor** doit maintenant montrer une deuxième table :
+   **evenements** (vide).
+2. Ouvre la fiche d'un commerce déjà créé (**Modifier**) et clique **Voir la
+   page publique** : une page plein écran à la couleur du commerce doit
+   s'afficher, avec son nom et un gros bouton (si un lien Google a été
+   renseigné) ou un message d'attente (sinon).
+3. Si un lien Google est renseigné, clique le bouton : tu dois être
+   redirigé vers la vraie fiche Google.
+4. Teste aussi une adresse qui n'existe pas, du type
+   `.../avis/ce-commerce-n-existe-pas` : une page d'erreur soignée doit
+   s'afficher, pas un plantage technique.
+
+**Ce que ça coûte** : rien pour ce volume (Supabase Free, Vercel Hobby).
+
+---
+
+*Sections suivantes ajoutées au fil des prochains jalons : le QR code
+téléchargeable (Jalon 5), et la suite.*
